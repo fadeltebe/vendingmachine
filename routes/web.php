@@ -18,3 +18,5 @@ Route::prefix('admin')->group(function () {
     Route::get('/machines', MachineManager::class);
     Route::get('/orders', OrderMonitor::class);
 });
+
+Route::post('/webhook/midtrans', [\App\Http\Controllers\MidtransWebhookController::class, 'handle']);
