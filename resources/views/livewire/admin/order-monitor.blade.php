@@ -1,4 +1,4 @@
-<div>
+<div wire:poll.2s>
     <h2 class="text-sm font-bold text-slate-400 uppercase tracking-wider mb-4">Transaksi Terakhir</h2>
 
     <div class="space-y-3">
