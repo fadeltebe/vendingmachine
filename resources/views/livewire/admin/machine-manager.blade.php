@@ -22,6 +22,7 @@
             <p class="text-xs text-slate-500 mb-4">{{ $machine->location ?? 'Lokasi belum diset' }}</p>
             
             <div class="flex gap-2">
+                <a href="{{ route('storefront', ['unique_code' => $machine->unique_code]) }}" target="_blank" class="neumorphic-btn flex-1 py-2 rounded-xl text-xs font-bold text-emerald-600 text-center block">Toko</a>
                 <button class="neumorphic-btn flex-1 py-2 rounded-xl text-xs font-bold text-indigo-600">Slots</button>
                 <button class="neumorphic-btn flex-1 py-2 rounded-xl text-xs font-bold text-slate-600">Edit</button>
             </div>
