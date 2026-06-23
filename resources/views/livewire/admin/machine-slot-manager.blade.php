@@ -14,7 +14,7 @@
     </div>
 
     <div class="space-y-4">
-        @forelse($slots as $slot)
+        @forelse($machineSlots as $slot)
         <div class="neumorphic-flat p-4 rounded-3xl flex items-center justify-between">
             <div class="flex items-center gap-4">
                 <div class="w-12 h-12 rounded-xl neumorphic-inset flex items-center justify-center text-lg font-bold text-slate-600">

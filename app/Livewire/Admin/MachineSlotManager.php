@@ -12,7 +12,7 @@ use App\Models\Product;
 class MachineSlotManager extends Component
 {
     public Machine $machine;
-    public $slots;
+    public $machineSlots;
     public $products;
 
     public $slotId;
@@ -35,7 +35,7 @@ class MachineSlotManager extends Component
 
     public function loadSlots()
     {
-        $this->slots = $this->machine->slots()->with('product')->orderBy('slot_number')->get();
+        $this->machineSlots = $this->machine->slots()->with('product')->orderBy('slot_number')->get();
     }
 
     public function openModal()
