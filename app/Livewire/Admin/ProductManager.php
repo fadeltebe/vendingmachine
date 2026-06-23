@@ -69,7 +69,6 @@ class ProductManager extends Component
             'name' => 'required|string|max:255',
             'description' => 'nullable|string',
             'base_price' => 'required|numeric|min:0',
-            'stock' => 'required|numeric|min:0',
         ];
 
         if (!$this->isEditMode || $this->image) {
@@ -82,7 +81,6 @@ class ProductManager extends Component
             'name' => $this->name,
             'description' => $this->description,
             'base_price' => $this->base_price,
-            'stock' => $this->stock,
         ];
 
         if ($this->image) {

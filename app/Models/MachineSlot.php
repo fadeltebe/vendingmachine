@@ -20,4 +20,25 @@ class MachineSlot extends Model
     {
         return $this->belongsTo(Product::class);
     }
+
+    protected static function booted()
+    {
+        static::saved(function ($slot) {
+            if ($slot->isDirty('product_id') && $slot->getOriginal('product_id')) {
+                $oldProduct = Product::find($slot->getOriginal('product_id'));
+                if ($oldProduct) {
+                    $oldProduct->update(['stock' => $oldProduct->slots()->sum('stock')]);
+                }
+            }
+            if ($slot->product_id && $slot->product) {
+                $slot->product->update(['stock' => $slot->product->slots()->sum('stock')]);
+            }
+        });
+
+        static::deleted(function ($slot) {
+            if ($slot->product_id && $slot->product) {
+                $slot->product->update(['stock' => $slot->product->slots()->sum('stock')]);
+            }
+        });
+    }
 }

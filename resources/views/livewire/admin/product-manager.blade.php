@@ -77,9 +77,8 @@
                 </div>
 
                 <div>
-                    <label class="block text-xs font-bold text-slate-500 mb-1">Stok Total</label>
-                    <input type="number" wire:model="stock" class="w-full bg-[#e0e5ec] border-none rounded-xl px-4 py-2 text-sm shadow-[inset_5px_5px_10px_#bec3c9,inset_-5px_-5px_10px_#ffffff] focus:ring-emerald-500 focus:outline-none" placeholder="0">
-                    @error('stock') <span class="text-xs text-red-500 mt-1 block">{{ $message }}</span> @enderror
+                    <label class="block text-xs font-bold text-slate-500 mb-1">Stok Total (Auto-kalkulasi dari Mesin)</label>
+                    <input type="number" wire:model="stock" disabled class="w-full bg-[#e0e5ec] border-none rounded-xl px-4 py-2 text-sm shadow-[inset_5px_5px_10px_#bec3c9,inset_-5px_-5px_10px_#ffffff] text-slate-400 cursor-not-allowed" placeholder="0">
                 </div>
 
                 <div>

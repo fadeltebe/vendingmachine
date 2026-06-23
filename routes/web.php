@@ -16,6 +16,7 @@ Route::prefix('admin')->group(function () {
     Route::get('/', Dashboard::class);
     Route::get('/products', ProductManager::class);
     Route::get('/machines', MachineManager::class);
+    Route::get('/machines/{machine}/slots', \App\Livewire\Admin\MachineSlotManager::class)->name('admin.machines.slots');
     Route::get('/orders', OrderMonitor::class);
 });
 
