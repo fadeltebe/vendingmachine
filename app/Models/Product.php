@@ -9,7 +9,7 @@ class Product extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'description', 'image', 'base_price'];
+    protected $fillable = ['name', 'description', 'image', 'base_price', 'stock'];
 
     public function slots()
     {

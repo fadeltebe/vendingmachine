@@ -21,6 +21,20 @@
                 <div>
                     <h3 class="font-bold text-slate-800 text-sm">{{ $product->name }}</h3>
                     <p class="text-xs font-bold text-emerald-600">Rp {{ number_format($product->base_price, 0, ',', '.') }}</p>
+                    <div class="mt-1">
+                        <span class="text-[10px] font-bold text-slate-500">Stok Total: {{ $product->stock }}</span>
+                        @if($product->slots->isNotEmpty())
+                            <div class="mt-0.5 space-y-0.5">
+                                @foreach($product->slots as $slot)
+                                    <div class="text-[9px] text-slate-400">
+                                        {{ $slot->machine->name ?? 'Mesin' }} (Slot {{ $slot->slot_number }}): <span class="font-bold">{{ $slot->stock }}</span> pcs
+                                    </div>
+                                @endforeach
+                            </div>
+                        @else
+                            <div class="text-[9px] text-slate-400 mt-0.5">Belum dialokasikan ke mesin</div>
+                        @endif
+                    </div>
                 </div>
             </div>
             <div class="flex flex-col gap-2">
@@ -60,6 +74,12 @@
                     <label class="block text-xs font-bold text-slate-500 mb-1">Harga Dasar (Rp)</label>
                     <input type="number" wire:model="base_price" class="w-full bg-[#e0e5ec] border-none rounded-xl px-4 py-2 text-sm shadow-[inset_5px_5px_10px_#bec3c9,inset_-5px_-5px_10px_#ffffff] focus:ring-emerald-500 focus:outline-none" placeholder="0">
                     @error('base_price') <span class="text-xs text-red-500 mt-1 block">{{ $message }}</span> @enderror
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-500 mb-1">Stok Total</label>
+                    <input type="number" wire:model="stock" class="w-full bg-[#e0e5ec] border-none rounded-xl px-4 py-2 text-sm shadow-[inset_5px_5px_10px_#bec3c9,inset_-5px_-5px_10px_#ffffff] focus:ring-emerald-500 focus:outline-none" placeholder="0">
+                    @error('stock') <span class="text-xs text-red-500 mt-1 block">{{ $message }}</span> @enderror
                 </div>
 
                 <div>

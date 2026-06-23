@@ -20,6 +20,7 @@ class ProductManager extends Component
     public $name;
     public $description;
     public $base_price;
+    public $stock = 0;
     public $image;
     public $oldImage;
     
@@ -34,7 +35,7 @@ class ProductManager extends Component
 
     public function loadProducts()
     {
-        $this->products = Product::all();
+        $this->products = Product::with('slots.machine')->get();
     }
 
     public function openModal()
@@ -56,6 +57,7 @@ class ProductManager extends Component
         $this->name = '';
         $this->description = '';
         $this->base_price = '';
+        $this->stock = 0;
         $this->image = null;
         $this->oldImage = null;
         $this->resetValidation();
@@ -67,6 +69,7 @@ class ProductManager extends Component
             'name' => 'required|string|max:255',
             'description' => 'nullable|string',
             'base_price' => 'required|numeric|min:0',
+            'stock' => 'required|numeric|min:0',
         ];
 
         if (!$this->isEditMode || $this->image) {
@@ -79,6 +82,7 @@ class ProductManager extends Component
             'name' => $this->name,
             'description' => $this->description,
             'base_price' => $this->base_price,
+            'stock' => $this->stock,
         ];
 
         if ($this->image) {
@@ -108,6 +112,7 @@ class ProductManager extends Component
         $this->name = $product->name;
         $this->description = $product->description;
         $this->base_price = $product->base_price;
+        $this->stock = $product->stock;
         $this->oldImage = $product->image;
         
         $this->isModalOpen = true;
